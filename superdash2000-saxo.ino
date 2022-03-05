@@ -9,6 +9,7 @@ const int pin_button = 0x2; /* Digital pin for push button */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 
 /* Constants */
+const int adc_resolution = 1024;
 const int lcd_i2c_addr = 0x27;
 const int char_empty = 0;
 const int char_full = 1;
@@ -34,6 +35,7 @@ const byte lcd_char_full[] = {
 };
 
 /* Globals */
+float adc_reference;
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
 
 void setup() {
@@ -42,6 +44,7 @@ void setup() {
   }
   configure_lcd();
   welcome_screen();
+  configure_adc();
   configure_pins();
   configure_interrupts();
 }
@@ -64,6 +67,11 @@ void welcome_screen() {
   delay(welcome_screen_duration_ms);
 
   lcd.clear();
+}
+
+void configure_adc() {
+  analogReference(INTERNAL4V3);
+  adc_reference = 4.3;
 }
 
 void configure_pins() {
