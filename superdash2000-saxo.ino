@@ -5,6 +5,7 @@ const int button_debounce_ms = 250;  /* Debounce when pushing button */
 const bool config_serial = false; /* Enable/disable serial output */
 const int lcd_height = 2; /* LCD height in characters */
 const int lcd_width = 16; /* LCD width in characters */
+const int loop_period = 300;  /* Main loop period */
 const int pin_button = 0x2; /* Digital pin for push button */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 
@@ -83,8 +84,15 @@ void configure_interrupts() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  unsigned long t1;
+  unsigned long t2;
+  t1 = millis();
+  /* Things to do during loop */
+  t2 = millis();
 
+  if ((t2 - t1) < loop_period) {
+    delay(loop_period - (t2 - t1));
+  }
 }
 
 /* IRQ Handlers */
