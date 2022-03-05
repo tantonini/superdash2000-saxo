@@ -10,6 +10,28 @@ const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 
 /* Constants */
 const int lcd_i2c_addr = 0x27;
+const int char_empty = 0;
+const int char_full = 1;
+const byte lcd_char_empty[] = {
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000
+};
+const byte lcd_char_full[] = {
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111
+};
 
 /* Globals */
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
@@ -28,6 +50,9 @@ void configure_lcd() {
   lcd.init();
   lcd.clear();
   lcd.backlight();
+
+  lcd.createChar(char_empty, (unsigned char *)lcd_char_empty);
+  lcd.createChar(char_full, (unsigned char *)lcd_char_full);
 }
 
 void welcome_screen() {
