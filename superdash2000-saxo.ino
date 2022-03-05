@@ -1,6 +1,7 @@
 #include <LiquidCrystal_I2C.h>
 
 /* Configuration */
+const bool config_serial = false; /* Enable/disable serial output */
 const int lcd_height = 2; /* LCD height in characters */
 const int lcd_width = 16; /* LCD width in characters */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
@@ -12,6 +13,9 @@ const int lcd_i2c_addr = 0x27;
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
 
 void setup() {
+  if (config_serial) {
+    Serial.begin(9600);
+  }
   configure_lcd();
   welcome_screen();
 }
