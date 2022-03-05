@@ -1,9 +1,11 @@
 #include <LiquidCrystal_I2C.h>
 
 /* Configuration */
+const int button_debounce_ms = 250;  /* Debounce when pushing button */
 const bool config_serial = false; /* Enable/disable serial output */
 const int lcd_height = 2; /* LCD height in characters */
 const int lcd_width = 16; /* LCD width in characters */
+const int pin_button = 0x2; /* Digital pin for push button */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 
 /* Constants */
@@ -18,6 +20,8 @@ void setup() {
   }
   configure_lcd();
   welcome_screen();
+  configure_pins();
+  configure_interrupts();
 }
 
 void configure_lcd() {
@@ -37,7 +41,30 @@ void welcome_screen() {
   lcd.clear();
 }
 
+void configure_pins() {
+  pinMode(pin_button, INPUT);
+}
+
+void configure_interrupts() {
+  attachInterrupt(digitalPinToInterrupt(pin_button), button_irq_handler, RISING);
+}
+
 void loop() {
   // put your main code here, to run repeatedly:
 
+}
+
+/* IRQ Handlers */
+void button_irq_handler(void) {
+  static unsigned long last_interrupt_time = 0;
+  unsigned long interrupt_time = millis();
+
+  /* If interrupts come faster than button_debounce_ms, assume it's a bounce and ignore */
+  if (interrupt_time - last_interrupt_time > button_debounce_ms) {
+    if (config_serial) {
+      Serial.println("Button pushed");
+    }
+  }
+
+  last_interrupt_time = interrupt_time;
 }
