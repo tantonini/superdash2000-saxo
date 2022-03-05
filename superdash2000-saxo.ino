@@ -23,6 +23,7 @@ const int adc_resolution = 1024;
 const int lcd_i2c_addr = 0x27;
 const int char_empty = 0;
 const int char_full = 1;
+const int char_degree = 2;
 const byte lcd_char_empty[] = {
   0b00000,
   0b00000,
@@ -42,6 +43,16 @@ const byte lcd_char_full[] = {
   0b11111,
   0b11111,
   0b11111
+};
+const byte lcd_char_degree[] = {
+  0b00100,
+  0b01010,
+  0b00100,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000
 };
 
 /* Globals */
@@ -68,6 +79,7 @@ void configure_lcd() {
 
   lcd.createChar(char_empty, (unsigned char *)lcd_char_empty);
   lcd.createChar(char_full, (unsigned char *)lcd_char_full);
+  lcd.createChar(char_degree, (unsigned char *)lcd_char_degree);
 }
 
 void welcome_screen() {
