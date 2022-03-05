@@ -4,6 +4,7 @@
 const int button_debounce_ms = 250;  /* Debounce when pushing button */
 const bool config_serial = false; /* Enable/disable serial output */
 const int lcd_height = 2; /* LCD height in characters */
+const int lcd_refresh_period_ms = 3000; /* Period for LCD refresh */
 const int lcd_width = 16; /* LCD width in characters */
 const int loop_period = 300;  /* Main loop period */
 const int pin_button = 0x2; /* Digital pin for push button */
@@ -94,13 +95,20 @@ void configure_interrupts() {
 void loop() {
   unsigned long t1;
   unsigned long t2;
-  t1 = millis();
-  if (change_mode) {
-    lcd.clear();  /* Clear the LCD when changing mode to avoid undesired characters */
-    change_mode = false;
-  }
+  static unsigned long lcd_refresh_t = lcd_refresh_period_ms;
 
-  /* Run the selected mode */
+  t1 = millis();
+  /* Only run mode after reaching LCD refresh or changing mode */
+  lcd_refresh_t += loop_period;
+  if ((lcd_refresh_t >= lcd_refresh_period_ms) || change_mode) {
+    lcd_refresh_t = 0;
+    if (change_mode) {
+      lcd.clear();  /* Clear the LCD when changing mode to avoid undesired characters */
+      change_mode = false;
+    }
+
+    /* Run the selected mode */
+  }
 
   t2 = millis();
 
