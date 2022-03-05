@@ -7,12 +7,14 @@ const int lcd_height = 2; /* LCD height in characters */
 const int lcd_refresh_period_ms = 3000; /* Period for LCD refresh */
 const int lcd_width = 16; /* LCD width in characters */
 const int loop_period = 300;  /* Main loop period */
+const int pin_battery = A0; /* Analog pin for measuring battery voltage */
 const int pin_button = 0x2; /* Digital pin for push button */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 /* This enum is used for the order of the modes.
    Just reorganize the enum for modifying the order.
    Modes can also be removed from this enum to not use them */
 enum mode {
+  MODE_BATTERY = 0,
   MODE_MAX
 };
 
@@ -108,6 +110,9 @@ void loop() {
     }
 
     /* Run the selected mode */
+    if (MODE_BATTERY == mode) {
+      mode_battery();
+    }
   }
 
   t2 = millis();
@@ -115,6 +120,31 @@ void loop() {
   if ((t2 - t1) < loop_period) {
     delay(loop_period - (t2 - t1));
   }
+}
+
+void mode_battery(void) {
+  float battery_voltage;
+  const int r1 = 5100;
+  const int r2 = 2000;
+  int battery_adc;
+
+  /* Get battery voltage */
+  battery_adc = analogRead(pin_battery);
+  battery_voltage = battery_adc * adc_reference / adc_resolution;
+  /* Voltage divider */
+  battery_voltage = battery_voltage * (r1 + r2) / r2;
+
+  /* Print battery voltage */
+  lcd.setCursor(0, 0);
+  lcd.print("BATTERY");
+  lcd.setCursor(0, 1);
+
+  if (battery_voltage <= 9.99) {
+    lcd.print(" ");
+  }
+
+  lcd.print(battery_voltage);
+  lcd.print(" V");
 }
 
 /* IRQ Handlers */
