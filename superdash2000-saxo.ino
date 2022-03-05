@@ -9,12 +9,14 @@ const int lcd_width = 16; /* LCD width in characters */
 const int loop_period = 300;  /* Main loop period */
 const int pin_battery = A0; /* Analog pin for measuring battery voltage */
 const int pin_button = 0x2; /* Digital pin for push button */
+const int pin_water = 0x3;  /* Digital pin for measuring water temperature */
 const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
 /* This enum is used for the order of the modes.
    Just reorganize the enum for modifying the order.
    Modes can also be removed from this enum to not use them */
 enum mode {
-  MODE_BATTERY = 0,
+  MODE_WATER = 0,
+  MODE_BATTERY,
   MODE_MAX
 };
 
@@ -60,6 +62,7 @@ float adc_reference;
 bool change_mode = false;
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
 int mode = 0;
+float water_duty_cycle;
 
 void setup() {
   if (config_serial) {
@@ -100,10 +103,12 @@ void configure_adc() {
 
 void configure_pins() {
   pinMode(pin_button, INPUT);
+  pinMode(pin_water, INPUT);
 }
 
 void configure_interrupts() {
   attachInterrupt(digitalPinToInterrupt(pin_button), button_irq_handler, RISING);
+  attachInterrupt(digitalPinToInterrupt(pin_water), water_irq_handler, CHANGE);
 }
 
 void loop() {
@@ -124,6 +129,9 @@ void loop() {
     /* Run the selected mode */
     if (MODE_BATTERY == mode) {
       mode_battery();
+    }
+    else if (MODE_WATER == mode) {
+      mode_water();
     }
   }
 
@@ -159,6 +167,38 @@ void mode_battery(void) {
   lcd.print(" V");
 }
 
+void mode_water(void) {
+  int water_temp;
+
+  /* Water temp is obtained from the signal duty cycle with the following function:
+   * temp = -193 * duty_cycle + 145 */
+  water_temp = -193 * water_duty_cycle + 145;
+
+  /* Print battery voltage */
+  lcd.setCursor(0, 0);
+  lcd.print("WATER");
+  lcd.setCursor(0, 1);
+
+  if (water_temp <= -10) {
+  }
+  else if (water_temp <= -1) {
+    lcd.print(" ");
+  }
+  else if (water_temp <= 9) {
+    lcd.print("  ");
+  }
+  else if (water_temp <= 99) {
+    lcd.print(" ");
+  }
+  else if (water_temp >= 100) {
+  }
+
+  lcd.print(water_temp);
+  lcd.print(" ");
+  lcd.write(char_degree);
+  lcd.print("C");
+}
+
 /* IRQ Handlers */
 void button_irq_handler(void) {
   static unsigned long last_interrupt_time = 0;
@@ -178,4 +218,28 @@ void button_irq_handler(void) {
   }
 
   last_interrupt_time = interrupt_time;
+}
+
+void water_irq_handler(void) {
+  /*        ______       ______
+            |    |       |    |
+            |    |       |    |
+     _______|    |_______|    |___
+            t1   t2      t1   t2
+  */
+  int state = digitalRead(pin_water);
+  static unsigned long t1;
+  static unsigned long t2;
+  static unsigned long high_time;
+  static unsigned long low_time;
+
+  if (HIGH == state) {
+    t1 = micros();
+    low_time = t1 - t2;
+    water_duty_cycle = float(high_time) / float(high_time + low_time);
+  }
+  else {
+    t2 = micros();
+    high_time = t2 - t1;
+  }
 }
