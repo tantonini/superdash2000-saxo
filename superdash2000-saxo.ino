@@ -16,7 +16,7 @@ const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
    Just reorganize the enum for modifying the order.
    Modes can also be removed from this enum to not use them */
 enum mode {
-  MODE_WATER = 0,
+  MODE_WATER_1 = 0,
   MODE_BATTERY,
   MODE_MAX
 };
@@ -63,6 +63,7 @@ float adc_reference;
 bool change_mode = false;
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
 int mode = 0;
+float water_duty_cycle;
 unsigned long water_high_time;
 unsigned long water_low_time;
 
@@ -132,8 +133,8 @@ void loop() {
     if (MODE_BATTERY == mode) {
       mode_battery();
     }
-    else if (MODE_WATER == mode) {
-      mode_water();
+    else if (MODE_WATER_1 == mode) {
+      mode_water_1();
     }
   }
 
@@ -169,13 +170,8 @@ void mode_battery(void) {
   lcd.print(" V");
 }
 
-void mode_water(void) {
-  int water_temp;
-  float water_duty_cycle = float(water_high_time) / (water_high_time + water_low_time);
-
-  /* Water temp is obtained from the signal duty cycle with the following function:
-   * temp = -193 * duty_cycle + 145 */
-  water_temp = -193 * water_duty_cycle + 145;
+void mode_water_1(void) {
+  int water_temp = get_water_temp();
 
   /* Print battery voltage */
   lcd.setCursor(0, 0);
@@ -211,6 +207,17 @@ void mode_water(void) {
     lcd.print(water_duty_cycle * 100);
     lcd.print("%");
   }
+}
+
+int get_water_temp(void) {
+  int water_temp;
+  water_duty_cycle = float(water_high_time) / (water_high_time + water_low_time);
+
+  /* Water temp is obtained from the signal duty cycle with the following function:
+     temp = -193 * duty_cycle + 145 */
+  water_temp = -193 * water_duty_cycle + 145;
+
+  return water_temp;
 }
 
 /* IRQ Handlers */
