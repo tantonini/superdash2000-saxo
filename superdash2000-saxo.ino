@@ -63,7 +63,8 @@ float adc_reference;
 bool change_mode = false;
 LiquidCrystal_I2C lcd(lcd_i2c_addr, lcd_width, lcd_height);
 int mode = 0;
-float water_duty_cycle;
+unsigned long water_high_time;
+unsigned long water_low_time;
 
 void setup() {
   if (config_serial) {
@@ -170,6 +171,7 @@ void mode_battery(void) {
 
 void mode_water(void) {
   int water_temp;
+  float water_duty_cycle = float(water_high_time) / (water_high_time + water_low_time);
 
   /* Water temp is obtained from the signal duty cycle with the following function:
    * temp = -193 * duty_cycle + 145 */
@@ -242,16 +244,13 @@ void water_irq_handler(void) {
   int state = digitalRead(pin_water);
   static unsigned long t1;
   static unsigned long t2;
-  static unsigned long high_time;
-  static unsigned long low_time;
 
   if (HIGH == state) {
     t1 = micros();
-    low_time = t1 - t2;
-    water_duty_cycle = float(high_time) / float(high_time + low_time);
+    water_low_time = t1 - t2;
   }
   else {
     t2 = micros();
-    high_time = t2 - t1;
+    water_high_time = t2 - t1;
   }
 }
