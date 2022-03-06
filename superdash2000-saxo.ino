@@ -17,6 +17,7 @@ const int welcome_screen_duration_ms = 2000;  /* Welcome scren duration in ms */
    Modes can also be removed from this enum to not use them */
 enum mode {
   MODE_WATER_1 = 0,
+  MODE_WATER_2,
   MODE_BATTERY,
   MODE_MAX
 };
@@ -136,12 +137,30 @@ void loop() {
     else if (MODE_WATER_1 == mode) {
       mode_water_1();
     }
+    else if (MODE_WATER_2 == mode) {
+      mode_water_2();
+    }
   }
 
   t2 = millis();
 
   if ((t2 - t1) < loop_period) {
     delay(loop_period - (t2 - t1));
+  }
+}
+
+void print_bar(int min, int max, int value) {
+  /* Calculate step size */
+  float step = float(max - min) / lcd_width;
+
+  lcd.setCursor(0, 1);
+  for (int i = 0; i < lcd_width; i++) {
+    if ((min + i * step) <= value) {
+      lcd.write(char_full);
+    }
+    else {
+      lcd.write(char_empty);
+    }
   }
 }
 
@@ -207,6 +226,35 @@ void mode_water_1(void) {
     lcd.print(water_duty_cycle * 100);
     lcd.print("%");
   }
+}
+
+void mode_water_2(void) {
+  int water_temp = get_water_temp();
+
+  /* Print battery voltage */
+  lcd.setCursor(0, 0);
+  lcd.print("WATER     ");
+
+  if (water_temp <= -10) {
+  }
+  else if (water_temp <= -1) {
+    lcd.print(" ");
+  }
+  else if (water_temp <= 9) {
+    lcd.print("  ");
+  }
+  else if (water_temp <= 99) {
+    lcd.print(" ");
+  }
+  else if (water_temp >= 100) {
+  }
+
+  lcd.print(water_temp);
+  lcd.print(" ");
+  lcd.write(char_degree);
+  lcd.print("C");
+
+  print_bar(60, 120, water_temp);
 }
 
 int get_water_temp(void) {
