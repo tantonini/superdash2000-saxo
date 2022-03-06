@@ -111,7 +111,7 @@ void configure_pins() {
 }
 
 void configure_interrupts() {
-  attachInterrupt(digitalPinToInterrupt(pin_button), button_irq_handler, RISING);
+  attachInterrupt(digitalPinToInterrupt(pin_button), button_irq_handler, FALLING);
   attachInterrupt(digitalPinToInterrupt(pin_water), water_irq_handler, CHANGE);
 }
 
