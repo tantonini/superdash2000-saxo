@@ -71,10 +71,10 @@ void setup() {
     Serial.begin(9600);
   }
   configure_lcd();
-  welcome_screen();
   configure_adc();
   configure_pins();
   configure_interrupts();
+  welcome_screen();
 }
 
 void configure_lcd() {
