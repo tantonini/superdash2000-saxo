@@ -3,6 +3,7 @@
 /* Configuration */
 const int button_debounce_ms = 250;  /* Debounce when pushing button */
 const bool config_serial = false; /* Enable/disable serial output */
+const bool config_water_temp_debug = false; /* Display more infos in water mode */
 const int lcd_height = 2; /* LCD height in characters */
 const int lcd_refresh_period_ms = 3000; /* Period for LCD refresh */
 const int lcd_width = 16; /* LCD width in characters */
@@ -197,6 +198,17 @@ void mode_water(void) {
   lcd.print(" ");
   lcd.write(char_degree);
   lcd.print("C");
+
+  if (config_water_temp_debug) {
+    if (water_duty_cycle * 100 < 10) {
+      lcd.print("     ");
+    }
+    else {
+      lcd.print("    ");
+    }
+    lcd.print(water_duty_cycle * 100);
+    lcd.print("%");
+  }
 }
 
 /* IRQ Handlers */
