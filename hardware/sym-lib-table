@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name "Molex_34691-0161")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/Molex_34691-0161.kicad_sym")(options "")(descr ""))
+  (lib (name "MCP4151-103E_P")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/MCP4151-103E_P.kicad_sym")(options "")(descr ""))
 )
