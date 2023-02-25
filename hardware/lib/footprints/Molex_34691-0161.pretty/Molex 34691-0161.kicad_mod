@@ -51,8 +51,8 @@
   (pad "15" thru_hole circle (at 15.24 2.54) (size 1.8 1.8) (drill 1.2) (layers *.Cu *.Mask) (tstamp d26b8c32-e1b4-4a9a-9f51-c761a8bcd40c))
   (pad "16" thru_hole circle (at 17.78 2.54) (size 1.8 1.8) (drill 1.2) (layers *.Cu *.Mask) (tstamp f69e3371-eaf8-45db-915a-d8029b1777b7))
   (model "${KIPRJMOD}/lib/3dmodels/Molex_34691-0161.stp"
-    (offset (xyz 0 0 0))
+    (offset (xyz 85.6 -31.25 -32))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz 90 180 -180))
   )
 )
