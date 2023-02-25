@@ -1120,6 +1120,7 @@
     )
   )
 
+
   (junction (at 81.28 64.77) (diameter 0) (color 0 0 0 0)
     (uuid 13741ea4-b146-4a67-a02a-af8ec2a070c7)
   )
@@ -1553,7 +1554,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 154.94 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 2c2c0160-d229-41a2-b822-4cf1420ec8e9)
-    (property "Reference" "#PWR?" (id 0) (at 154.94 48.26 0)
+    (property "Reference" "#PWR06" (id 0) (at 154.94 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 154.94 46.99 0))
@@ -1600,7 +1601,7 @@
   (symbol (lib_id "Amplifier_Operational:TLV2372") (at 72.39 113.03 0) (unit 3)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 37d731ac-aa73-4d1a-b688-0abbd56fee75)
-    (property "Reference" "U1" (id 0) (at 71.12 111.7599 0)
+    (property "Reference" "U2" (id 0) (at 71.12 111.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TLV2372" (id 1) (at 71.12 114.2999 0)
@@ -1679,7 +1680,7 @@
   (symbol (lib_name "GND_3") (lib_id "power:GND") (at 109.22 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 44a14783-b732-4cad-b4e3-6acdd52fd22f)
-    (property "Reference" "#PWR?" (id 0) (at 109.22 118.11 0)
+    (property "Reference" "#PWR04" (id 0) (at 109.22 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 109.22 116.84 0))
@@ -1695,7 +1696,7 @@
   (symbol (lib_name "GND_5") (lib_id "power:GND") (at 109.22 151.13 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 4c0b9cd9-ca22-4581-9004-f5bcc462bbf4)
-    (property "Reference" "#PWR?" (id 0) (at 109.22 157.48 0)
+    (property "Reference" "#PWR05" (id 0) (at 109.22 157.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 109.22 156.21 0))
@@ -1898,7 +1899,7 @@
   (symbol (lib_name "GND_4") (lib_id "power:GND") (at 195.58 137.16 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 7c43fb8d-99fb-43c3-9bcb-9181569a93c6)
-    (property "Reference" "#PWR?" (id 0) (at 195.58 143.51 0)
+    (property "Reference" "#PWR07" (id 0) (at 195.58 143.51 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 195.58 142.24 0))
@@ -1952,7 +1953,7 @@
   (symbol (lib_name "GND_2") (lib_id "power:GND") (at 69.85 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a55a6c63-efeb-4a39-b005-db7246ff05b2)
-    (property "Reference" "#PWR?" (id 0) (at 69.85 127 0)
+    (property "Reference" "#PWR03" (id 0) (at 69.85 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 69.85 125.73 0))
@@ -1968,7 +1969,7 @@
   (symbol (lib_id "power:+BATT") (at 154.94 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b87c930c-8d22-4000-a82f-ac742bad5f6a)
-    (property "Reference" "#PWR1" (id 0) (at 154.94 30.48 0)
+    (property "Reference" "#PWR01" (id 0) (at 154.94 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (id 1) (at 154.94 21.59 0))
@@ -1984,7 +1985,7 @@
   (symbol (lib_id "power:+BATT") (at 81.28 64.77 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid bfcc77a0-ee67-4af0-9e4b-c64f7ccc8208)
-    (property "Reference" "#PWR1" (id 0) (at 81.28 68.58 0)
+    (property "Reference" "#PWR0103" (id 0) (at 81.28 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (id 1) (at 81.28 59.69 0))
@@ -2050,7 +2051,7 @@
   (symbol (lib_id "power:+BATT") (at 69.85 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid dca402e7-0e77-45e9-a01b-7f7133721d95)
-    (property "Reference" "#PWR?" (id 0) (at 69.85 109.22 0)
+    (property "Reference" "#PWR02" (id 0) (at 69.85 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (id 1) (at 69.85 100.33 0))
@@ -2066,7 +2067,7 @@
   (symbol (lib_id "Amplifier_Operational:TLV2372") (at 92.71 93.98 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid dd5c3b2c-bf9a-4210-9e80-91b487d16ffc)
-    (property "Reference" "U1" (id 0) (at 92.71 83.82 0))
+    (property "Reference" "U2" (id 0) (at 92.71 83.82 0))
     (property "Value" "TLV2372" (id 1) (at 92.71 86.36 0))
     (property "Footprint" "" (id 2) (at 92.71 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -2087,7 +2088,7 @@
   (symbol (lib_id "Amplifier_Operational:TLV2372") (at 92.71 133.35 0) (unit 2)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid decc528c-3d97-4a7b-9669-34ab28ca3491)
-    (property "Reference" "U1" (id 0) (at 92.71 123.19 0))
+    (property "Reference" "U2" (id 0) (at 92.71 123.19 0))
     (property "Value" "TLV2372" (id 1) (at 92.71 125.73 0))
     (property "Footprint" "" (id 2) (at 92.71 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -2187,16 +2188,34 @@
 
   (symbol_instances
     (path "/b87c930c-8d22-4000-a82f-ac742bad5f6a"
-      (reference "#PWR1") (unit 1) (value "+BATT") (footprint "")
+      (reference "#PWR01") (unit 1) (value "+BATT") (footprint "")
     )
-    (path "/bfcc77a0-ee67-4af0-9e4b-c64f7ccc8208"
-      (reference "#PWR1") (unit 1) (value "+BATT") (footprint "")
+    (path "/dca402e7-0e77-45e9-a01b-7f7133721d95"
+      (reference "#PWR02") (unit 1) (value "+BATT") (footprint "")
+    )
+    (path "/a55a6c63-efeb-4a39-b005-db7246ff05b2"
+      (reference "#PWR03") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/44a14783-b732-4cad-b4e3-6acdd52fd22f"
+      (reference "#PWR04") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/4c0b9cd9-ca22-4581-9004-f5bcc462bbf4"
+      (reference "#PWR05") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/2c2c0160-d229-41a2-b822-4cf1420ec8e9"
+      (reference "#PWR06") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/7c43fb8d-99fb-43c3-9bcb-9181569a93c6"
+      (reference "#PWR07") (unit 1) (value "GND") (footprint "")
     )
     (path "/091fa7fe-31f2-4bc7-b9ae-103378e7ecef"
       (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
     )
     (path "/2d42965a-3076-4350-a25e-4a3c6a2ed82a"
       (reference "#PWR0102") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/bfcc77a0-ee67-4af0-9e4b-c64f7ccc8208"
+      (reference "#PWR0103") (unit 1) (value "+BATT") (footprint "")
     )
     (path "/d452a94e-41da-4920-9425-e3d186a49a40"
       (reference "#PWR0104") (unit 1) (value "+5V") (footprint "")
@@ -2206,24 +2225,6 @@
     )
     (path "/28bd7130-fb8b-4bdb-a9c1-61b7bb039857"
       (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/2c2c0160-d229-41a2-b822-4cf1420ec8e9"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/44a14783-b732-4cad-b4e3-6acdd52fd22f"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/4c0b9cd9-ca22-4581-9004-f5bcc462bbf4"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/7c43fb8d-99fb-43c3-9bcb-9181569a93c6"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/a55a6c63-efeb-4a39-b005-db7246ff05b2"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/dca402e7-0e77-45e9-a01b-7f7133721d95"
-      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
     )
     (path "/65c02b6a-4170-4a63-9193-eec01920d5e8"
       (reference "A1") (unit 1) (value "Arduino_Nano_Every") (footprint "Module:Arduino_Nano")
@@ -2280,13 +2281,13 @@
       (reference "U1") (unit 1) (value "L7805") (footprint "Package_TO_SOT_THT:TO-220-3_Vertical")
     )
     (path "/dd5c3b2c-bf9a-4210-9e80-91b487d16ffc"
-      (reference "U1") (unit 1) (value "TLV2372") (footprint "")
+      (reference "U2") (unit 1) (value "TLV2372") (footprint "")
     )
     (path "/decc528c-3d97-4a7b-9669-34ab28ca3491"
-      (reference "U1") (unit 2) (value "TLV2372") (footprint "")
+      (reference "U2") (unit 2) (value "TLV2372") (footprint "")
     )
     (path "/37d731ac-aa73-4d1a-b688-0abbd56fee75"
-      (reference "U1") (unit 3) (value "TLV2372") (footprint "")
+      (reference "U2") (unit 3) (value "TLV2372") (footprint "")
     )
   )
 )
