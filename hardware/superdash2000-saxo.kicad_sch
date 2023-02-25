@@ -2022,7 +2022,7 @@
     (uuid 65c02b6a-4170-4a63-9193-eec01920d5e8)
     (property "Reference" "A1" (id 0) (at 194.31 59.9186 90))
     (property "Value" "Arduino_Nano_Every" (id 1) (at 194.31 62.4586 90))
-    (property "Footprint" "Module:Arduino_Nano" (id 2) (at 160.02 63.5 0)
+    (property "Footprint" "Arduino_Nano_Every:Arduino_Nano_Every_WithMountingHoles" (id 2) (at 160.02 63.5 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "Datasheet" "https://content.arduino.cc/assets/NANOEveryV3.0_sch.pdf" (id 3) (at 160.02 63.5 0)
@@ -2566,7 +2566,7 @@
       (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
     )
     (path "/65c02b6a-4170-4a63-9193-eec01920d5e8"
-      (reference "A1") (unit 1) (value "Arduino_Nano_Every") (footprint "Module:Arduino_Nano")
+      (reference "A1") (unit 1) (value "Arduino_Nano_Every") (footprint "Arduino_Nano_Every:Arduino_Nano_Every_WithMountingHoles")
     )
     (path "/eae34f3b-9c4a-4c30-981e-9737d2460a8b"
       (reference "C1") (unit 1) (value "330n") (footprint "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm")
