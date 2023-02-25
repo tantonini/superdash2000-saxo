@@ -2,4 +2,5 @@
   (lib (name "Molex_34691-0161")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/Molex_34691-0161.kicad_sym")(options "")(descr ""))
   (lib (name "MCP4151-103E_P")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/MCP4151-103E_P.kicad_sym")(options "")(descr ""))
   (lib (name "MAX4617CPE+")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/MAX4617CPE+.kicad_sym")(options "")(descr ""))
+  (lib (name "Littlefuse_37201000431")(type "KiCad")(uri "${KIPRJMOD}/lib/symbols/Littlefuse_37201000431.kicad_sym")(options "")(descr ""))
 )

@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name "Molex_34691-0161")(type "KiCad")(uri "${KIPRJMOD}/lib/footprints/Molex_34691-0161.pretty")(options "")(descr ""))
+  (lib (name "Littlefuse_37201000431")(type "KiCad")(uri "${KIPRJMOD}/lib/footprints/Littlefuse_37201000431.pretty")(options "")(descr ""))
 )
