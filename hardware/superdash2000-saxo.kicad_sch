@@ -1231,7 +1231,6 @@
     )
   )
 
-
   (junction (at 234.95 62.23) (diameter 0) (color 0 0 0 0)
     (uuid 18060180-2508-4126-8b69-07e38ac82375)
   )
@@ -1627,7 +1626,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 8216f406-a36c-402a-ab4a-8d03415299d0)
   )
-  (label "LCD_BRIGHTNESS+" (at 34.29 31.75 180)
+  (label "LCD_BRIGHTNESS-" (at 34.29 31.75 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 8909c233-5fab-4eb1-9b2d-6ef049718f36)
   )
@@ -1639,7 +1638,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 97c828a5-099c-4357-868e-0cce62c0008e)
   )
-  (label "LCD_BRIGHTNESS-" (at 57.15 31.75 0)
+  (label "LCD_BRIGHTNESS+" (at 57.15 31.75 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 9bacbda7-3f6c-4bbf-9b87-7332d0c5c44b)
   )
